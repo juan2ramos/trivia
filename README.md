@@ -1,0 +1,2 @@
+# trivia
+### a Sails application
