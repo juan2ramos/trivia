@@ -1,0 +1,9 @@
+<div>
+  <h1><%= trivia.name %></h1>
+
+  <ul>
+    <% _.each(questions, function (question) { %>
+    <li><%= question.name %></li>
+    <% }) %>
+  </ul>
+</div>
