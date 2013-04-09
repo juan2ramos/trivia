@@ -1,12 +1,12 @@
 // Configure installed adapters
-// If you define an attribute in your model definition, 
+// If you define an attribute in your model definition,
 // it will override anything from this global config.
 module.exports.adapters = {
 
-	// If you leave the adapter config unspecified 
+	// If you leave the adapter config unspecified
 	// in a model definition, 'default' will be used.
-	'default': 'memory',
-	
+	'default': 'mysql',
+
 	// In-memory adapter for DEVELOPMENT ONLY
 	// (data is NOT preserved when the server shuts down)
 	memory: {
@@ -16,7 +16,7 @@ module.exports.adapters = {
 
 	// Persistent adapter for DEVELOPMENT ONLY
 	// (data IS preserved when the server shuts down)
-	// PLEASE NOTE: disk adapter not compatible with node v0.10.0 currently 
+	// PLEASE NOTE: disk adapter not compatible with node v0.10.0 currently
 	//				because of limitations in node-dirty
 	//				See https://github.com/felixge/node-dirty/issues/34
 	disk: {
@@ -29,9 +29,9 @@ module.exports.adapters = {
 	// Learn more: http://en.wikipedia.org/wiki/MySQL
 	mysql: {
 		module		: 'sails-mysql',
-		host		: 'YOUR_MYSQL_SERVER_HOSTNAME_OR_IP_ADDRESS',
-		user		: 'YOUR_MYSQL_USER',
-		password	: 'YOUR_MYSQL_PASSWORD',
-		database	: 'YOUR_MYSQL_DB'
+		host		: 'localhost',
+		user		: 'root',
+		password	: '123456',
+		database	: 'epa_trivia'
 	}
 };
