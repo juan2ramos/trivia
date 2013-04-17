@@ -1,11 +1,17 @@
 <div>
-  <h1><%= trivia.name %></h1>
+	<h1><%= trivia.name %></h1>
 
-  <ul>
-    <% _.each(questions, function (question) { %>
-    <li>
-    	<a href="/question/detail/<%= question.id %>"><%= question.question %></a>
-    </li>
-    <% }) %>
-  </ul>
+	<ul>
+		<% _.each(questions, function (question) { %>
+		<li>
+			<a href="/question/detail/<%= question.id %>"><%= question.question %></a>
+
+			<ul>
+				<% _.each(question.answers, function (answer) { %>
+				<li><%= answer.answer %></li>
+				<% }) %>
+			</ul>
+		</li>
+		<% }) %>
+	</ul>
 </div>
