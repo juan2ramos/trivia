@@ -16,23 +16,28 @@ var TriviaController = {
 		});
 	},
 
-	detail: function (req,res) {
+	detail: function (req, res) {
 		var id = req.param('id');
 		Trivia.find(id).done(function (err, trivia) {
 			if (err) {
 				return res.send(err,500);
 			}
 
-			Question.findAll({ trivia_id: trivia.id }).done(function (err, questions) {
-				if (err) {
-					return res.send(err,500);
-				}
+			if (trivia) {
 
-				return res.view({
-					trivia: trivia,
-					questions: questions
+				Question.findAll({ trivia_id: trivia.id }).done(function (err, questions) {
+					if (err) {
+						return res.send(err,500);
+					}
+
+					return res.view({
+						trivia: trivia,
+						questions: questions
+					});
 				});
-			});
+			} else {
+				res.redirect('/trivia');
+			}
 		});
 	}
 

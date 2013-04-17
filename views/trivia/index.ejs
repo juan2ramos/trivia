@@ -3,7 +3,9 @@
 
   <ul>
     <% _.each(trivias, function (trivia) { %>
-    <li><%= trivia.name %></li>
+    <li>
+    	<a href="/trivia/detail/<%= trivia.id %>"><%= trivia.name %></a>
+    </li>
     <% }) %>
   </ul>
 </div>

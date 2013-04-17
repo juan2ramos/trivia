@@ -3,7 +3,9 @@
 
   <ul>
     <% _.each(questions, function (question) { %>
-    <li><%= question.name %></li>
+    <li>
+    	<a href="/question/detail/<%= question.id %>"><%= question.question %></a>
+    </li>
     <% }) %>
   </ul>
 </div>

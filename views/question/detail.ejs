@@ -1,0 +1,15 @@
+<div>
+  <h1><%= question.question %></h1>
+
+  <ul>
+    <% _.each(answers, function (answer) { %>
+    <li>
+    	<% if (answer.id == question.correct) { %>
+    	<strong><%= answer.answer %></strong>
+    	<% } else { %>
+    	<%= answer.answer %>
+    	<% } %>
+    </li>
+    <% }) %>
+  </ul>
+</div>
