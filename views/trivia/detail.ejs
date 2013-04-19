@@ -13,7 +13,7 @@
 			<ul>
 			<% _.each(question.answers, function (answer) { %>
 				<li>
-				<% if (answer.id == question.correct) { %>
+				<% if (answer.correct === 1) { %>
 			    	<mark><%= answer.answer %></mark>
 			    <% } else { %>
 			    	<%= answer.answer %>

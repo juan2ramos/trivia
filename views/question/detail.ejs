@@ -4,7 +4,7 @@
   <ul>
     <% _.each(answers, function (answer) { %>
     <li>
-    	<% if (answer.id == question.correct) { %>
+    	<% if (answer.correct === 1) { %>
     	<strong><%= answer.answer %></strong>
     	<% } else { %>
     	<%= answer.answer %>
