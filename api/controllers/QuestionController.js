@@ -45,19 +45,39 @@ var QuestionController = {
 			}else {
 				console.log("Question created:", question.question);
 
-				answer = req.param('answer');
-
-				for (var i = 0; i < answer.length; i++) {
-					Answer.create({
-						answer: answer[i],
-						question_id: question.id
-					}).done(function(err, answer) {
-						if (err) {
-							return console.log(err);
-						}else {
-							console.log("Answer created:", answer.answer);
+				var i = 1;
+				var answer;
+				while (typeof req.param('answer_'+i) === 'string') {
+					answer = req.param('answer_'+i);
+					if (answer.length > 0) {
+						//is it the correct answer?
+						if (i == req.param('correct')) {
+							var correct_answer = answer;
 						}
-					});
+
+						Answer.create({
+							answer: answer,
+							question_id: question.id
+						}).done(function(err, answer) {
+							if (err) {
+								return console.log(err);
+							}else {
+								console.log("Answer created:", answer.answer);
+
+								//if this was the correct one, update the question
+								if (answer.answer == correct_answer) {
+									Question.update({id: question.id}, {correct: answer.id}, function(err, user) {
+										if (err) {
+											return console.log(err);
+										} else {
+											return res.redirect('/trivia/detail/'+question.trivia_id);
+										}
+									});
+								}
+							}
+						});
+					}
+					i++;
 				}
 			}
 		});
