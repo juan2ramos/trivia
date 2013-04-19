@@ -1,0 +1,32 @@
+<form method="post" action="/question/create">
+	<p>
+		<label for="question">Pregunta:</label>
+		<input type="text" name="question" id="question" />
+	</p>
+	<table>
+		<tr>
+			<th>Respuestas</th>
+			<th>Correcta</th>
+		</tr>
+		<tr>
+			<td><input type="text" name="answer[]" /></td>
+			<td><input type="radio" name="correct" value="1"></td>
+		</tr>
+		<tr>
+			<td><input type="text" name="answer[]" /></td>
+			<td><input type="radio" name="correct" value="2"></td>
+		</tr>
+		<tr>
+			<td><input type="text" name="answer[]" /></td>
+			<td><input type="radio" name="correct" value="3"></td>
+		</tr>
+		<tr>
+			<td><input type="text" name="answer[]" /></td>
+			<td><input type="radio" name="correct" value="4"></td>
+		</tr>
+	</table>
+	<div class="form-actions">
+		<input type="hidden" name="trivia_id" value="<%= trivia_id %>" />
+		<input type="submit" value="Guardar" />
+	</div>
+</form>

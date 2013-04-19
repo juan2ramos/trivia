@@ -22,6 +22,45 @@ var QuestionController = {
 				});
 			});
 		});
+	},
+
+	add: function (req,res) {
+		return res.view({
+			trivia_id: req.param('id')
+		});
+	},
+
+	create: function (req,res) {
+
+		Question.create({
+			question: req.param('question'),
+			trivia_id: req.param('trivia_id')
+		}).done(function(err, question) {
+
+			// Error handling
+			if (err) {
+				return console.log(err);
+
+			// The Question was created successfully!
+			}else {
+				console.log("Question created:", question.question);
+
+				answer = req.param('answer');
+
+				for (var i = 0; i < answer.length; i++) {
+					Answer.create({
+						answer: answer[i],
+						question_id: question.id
+					}).done(function(err, answer) {
+						if (err) {
+							return console.log(err);
+						}else {
+							console.log("Answer created:", answer.answer);
+						}
+					});
+				}
+			}
+		});
 	}
 
 };

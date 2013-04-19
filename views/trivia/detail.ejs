@@ -1,17 +1,27 @@
 <div>
 	<h1><%= trivia.name %></h1>
 
+	<p><a href="/question/add/<%= trivia.id %>" class="button">Agregar pregunta</a></p>
+
+	<h3>Preguntas:</h3>
 	<ul>
-		<% _.each(questions, function (question) { %>
+	<% _.each(questions, function (question) { %>
 		<li>
+			<a href="/question/destroy/<%= question.id %>">x</a>
 			<a href="/question/detail/<%= question.id %>"><%= question.question %></a>
 
 			<ul>
-				<% _.each(question.answers, function (answer) { %>
-				<li><%= answer.answer %></li>
-				<% }) %>
+			<% _.each(question.answers, function (answer) { %>
+				<li>
+				<% if (answer.id == question.correct) { %>
+			    	<mark><%= answer.answer %></mark>
+			    <% } else { %>
+			    	<%= answer.answer %>
+			    <% } %>
+				</li>
+			<% }) %>
 			</ul>
 		</li>
-		<% }) %>
+	<% }) %>
 	</ul>
 </div>
