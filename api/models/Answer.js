@@ -8,6 +8,7 @@ module.exports = {
 
 		answer: 'STRING',
 		question_id: 'INTEGER',
+		correct: 'BOOL'
 
 	}
 

@@ -47,38 +47,34 @@ var QuestionController = {
 
 				var i = 1;
 				var answer;
+				var correct;
 				while (typeof req.param('answer_'+i) === 'string') {
 					answer = req.param('answer_'+i);
 					if (answer.length > 0) {
 						//is it the correct answer?
 						if (i == req.param('correct')) {
-							var correct_answer = answer;
+							correct = true;
+						}else{
+							correct = false;
 						}
 
 						Answer.create({
 							answer: answer,
-							question_id: question.id
+							question_id: question.id,
+							correct: correct
 						}).done(function(err, answer) {
 							if (err) {
 								return console.log(err);
-							}else {
+							} else {
 								console.log("Answer created:", answer.answer);
-
-								//if this was the correct one, update the question
-								if (answer.answer == correct_answer) {
-									Question.update({id: question.id}, {correct: answer.id}, function(err, user) {
-										if (err) {
-											return console.log(err);
-										} else {
-											return res.redirect('/trivia/detail/'+question.trivia_id);
-										}
-									});
-								}
 							}
 						});
 					}
 					i++;
 				}
+
+				console.log('...redirecting...');
+				return res.redirect('/trivia/detail/'+question.trivia_id);
 			}
 		});
 	}
