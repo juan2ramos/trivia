@@ -1,14 +1,13 @@
 /*---------------------
-	:: Answer
+	:: User
 	-> model
 ---------------------*/
 module.exports = {
 
 	attributes	: {
 
-		answer: 'STRING',
-		question_id: 'INTEGER',
-		correct: 'BOOLEAN'
+		name: 'STRING',
+		points: 'INTEGER'
 
 	}
 

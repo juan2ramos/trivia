@@ -1,14 +1,15 @@
 /*---------------------
-	:: Answer
+	:: Game
 	-> model
 ---------------------*/
 module.exports = {
 
 	attributes	: {
 
-		answer: 'STRING',
+		user_id: 'INTEGER',
 		question_id: 'INTEGER',
-		correct: 'BOOLEAN'
+		answer_id: 'INTEGER',
+		timeleft: 'FLOAT'
 
 	}
 
