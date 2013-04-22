@@ -6,16 +6,8 @@ var QuestionController = {
 
 	detail: function (req,res) {
 		var id = req.param('id');
-		Question.find(id).done(function (err, question) {
-			if (err) {
-				return res.send(err,500);
-			}
-
-			Answer.findAll({ question_id: question.id }).done(function (err, answers) {
-				if (err) {
-					return res.send(err,500);
-				}
-
+		Question.findByID(id, function (question) {
+			Answer.findByQuestion(question.id, function (answers) {
 				return res.view({
 					question: question,
 					answers: answers
@@ -39,43 +31,41 @@ var QuestionController = {
 
 			// Error handling
 			if (err) {
-				return console.log(err);
+				return res.send(err,500);
+			}
 
 			// The Question was created successfully!
-			}else {
-				console.log("Question created:", question.question);
+			console.log("Question created:", question.question);
 
-				var i = 1;
-				var answer;
-				var correct;
-				while (typeof req.param('answer_'+i) === 'string') {
-					answer = req.param('answer_'+i);
-					if (answer.length > 0) {
-						//is it the correct answer?
-						if (i == req.param('correct')) {
-							correct = true;
-						}else{
-							correct = false;
-						}
-
-						Answer.create({
-							answer: answer,
-							question_id: question.id,
-							correct: correct
-						}).done(function(err, answer) {
-							if (err) {
-								return res.send(err,500);
-							} else {
-								console.log("Answer created:", answer.answer);
-							}
-						});
+			var i = 1;
+			var answer;
+			var correct;
+			while (typeof req.param('answer_'+i) === 'string') {
+				answer = req.param('answer_'+i);
+				if (answer.length > 0) {
+					//is it the correct answer?
+					if (i == req.param('correct')) {
+						correct = true;
+					}else{
+						correct = false;
 					}
-					i++;
-				}
 
-				console.log('...redirecting...');
-				return res.redirect('/trivia/detail/'+question.trivia_id);
+					Answer.create({
+						answer: answer,
+						question_id: question.id,
+						correct: correct
+					}).done(function(err, answer) {
+						if (err) {
+							return res.send(err,500);
+						}
+						console.log("Answer created:", answer.answer);
+					});
+				}
+				i++;
 			}
+
+			console.log('...redirecting...');
+			return res.redirect('/trivia/detail/'+question.trivia_id);
 		});
 	}
 

@@ -4,6 +4,25 @@
 ---------------------*/
 var GameController = {
 
+	index: function (req,res) {
+		var id = req.param('id');
+
+		User.findByID(1, function (user) {
+			Trivia.findByID(id, function (trivia) {
+				Question.getCount(trivia.id, function (total) {
+					Game.gamesPlayed(user.id, trivia.id, function (answered) {
+						return res.view({
+							user: user,
+							trivia: trivia,
+							total: total,
+							answered: answered
+						});
+					});
+				});
+			});
+		});
+	},
+
 	question: function (req,res) {
 		var trivia_id = req.param('id');
 
@@ -14,27 +33,15 @@ var GameController = {
 			};
 		};
 
-		var sql_query = 'SELECT question.id, question.question';
-		sql_query += ' FROM question, game WHERE question.id != game.question_id AND game.user_id = 1 AND question.trivia_id = '+trivia_id;
-		sql_query += ' ORDER BY RAND() LIMIT 1';
+		Question.getRandom(trivia_id, function(question) {
+			Answer.findByQuestion(question[0].id, function (answers) {
+				var reduced_answers = answers.map(reduceAnswer);
 
-		Question.query(sql_query, function(err, question) {
-			if (err) {
-				return res.send(err, 500);
-			} else {
-				Answer.findAll({ question_id: question[0].id }).done(function (err, answers) {
-					if (err) {
-						return res.send(err, 500);
-					} else {
-						var reduced_answers = answers.map(reduceAnswer);
-
-						return res.send({
-							question: question,
-							answers: reduced_answers
-						});
-					}
+				return res.send({
+					question: question,
+					answers: reduced_answers
 				});
-			}
+			});
 		});
 	}
 

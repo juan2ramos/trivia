@@ -18,10 +18,7 @@ var TriviaController = {
 
 	detail: function (req, res) {
 		var id = req.param('id');
-		Trivia.find(id).done(function (err, trivia) {
-			if (err) {
-				return res.send(err,500);
-			}
+		Trivia.findByID(id, function (trivia) {
 
 			if (trivia) {
 

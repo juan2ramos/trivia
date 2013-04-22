@@ -15,6 +15,16 @@ module.exports = {
 		//	defaultValue: '555-555-5555'
 		// }
 
+	},
+
+	findByID: function (id, cb) {
+		this.find(id).done(function (err, trivia) {
+			if (err) {
+				return res.send(err,500);
+			} else {
+				cb(trivia);
+			}
+		});
 	}
 
 };
