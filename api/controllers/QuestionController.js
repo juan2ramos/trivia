@@ -64,7 +64,7 @@ var QuestionController = {
 							correct: correct
 						}).done(function(err, answer) {
 							if (err) {
-								return console.log(err);
+								return res.send(err,500);
 							} else {
 								console.log("Answer created:", answer.answer);
 							}
