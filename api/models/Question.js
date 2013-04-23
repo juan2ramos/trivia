@@ -22,7 +22,7 @@ module.exports = {
 		});
 	},
 
-	getRandom: function (trivia_id, cb) {
+	getRandom: function (res, trivia_id, cb) {
 		var sql_query = 'SELECT question.id, question.question';
 		sql_query += ' FROM question, game WHERE question.id != game.question_id AND game.user_id = 1 AND question.trivia_id = '+trivia_id;
 		sql_query += ' ORDER BY RAND() LIMIT 1';

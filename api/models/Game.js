@@ -25,6 +25,16 @@ module.exports = {
 				cb(data[0].total);
 			}
 		});
+	},
+
+	alreadyPlayed: function (user_id, question_id, cb) {
+		this.findAll({ user_id: user_id, question_id: question_id }).done(function (err, games) {
+			if (err) {
+				return res.send(err, 500);
+			} else {
+				cb(games.length);
+			}
+		});
 	}
 
 };

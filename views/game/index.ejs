@@ -1,0 +1,16 @@
+<header>
+  <h1 id="trivia_title" data-triviaid="<%= trivia.id %>"><%= trivia.name %></h1>
+  <h2><%= user.name %></h2>
+  <h3><span id="points"><%= user.points %></span> puntos</h3>
+  <h4><span id="answered"><%= answered %></span> / <span id="total"><%= total %></span> preguntas</h4>
+</header>
+
+<div>
+  <div id="question-area">...cargando...</div>
+  <div id="timer">60</div>
+  <section id="score">
+    <p id="right_answer">Respuesta Correcta!</p>
+    <p id="wrong_answer">Respuesta Incorrecta!</p>
+    <p id="game_points"></p>
+  </section>
+</div>

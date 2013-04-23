@@ -5,10 +5,9 @@
 
 		<!-- Viewport mobile tag for sensible mobile support -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		
+
 		<!-- JavaScript and stylesheets from your assets folder are included here -->
 		<%- assets.css() %>
-		<%- assets.js() %>
 	</head>
 
 	<body>
@@ -16,5 +15,8 @@
 
 		<!-- Templates from your view path are included here -->
 		<%- assets.templateLibrary() %>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<%- assets.js() %>
 	</body>
 </html>
