@@ -72,7 +72,7 @@ var GameController = {
 				}
 
 				return res.send({
-					answer: answer,
+					answer: answer.id,
 					points: points,
 					msg: msg
 				});

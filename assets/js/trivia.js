@@ -37,7 +37,7 @@ $(function()
 		disableAnswering();
 		checkAnswer(null, 0);
 		wrongAnswer();
-		showPoints(0);
+		addPoints(0);
 	}
 
 	var answerClick = function(event) {
@@ -65,7 +65,13 @@ $(function()
 	}
 
 	var processResults = function(data) {
-		console.log(data);
+		if(data.points == 0) {
+			wrongAnswer();
+		} else {
+			rightAnswer();
+		}
+		addPoints(data.points);
+		revealRightAnswer(data.answer);
 	}
 
 	var wrongAnswer = function() {
@@ -78,8 +84,13 @@ $(function()
 		$('#right_answer').fadeIn();
 	}
 
-	var showPoints = function(points) {
+	var addPoints = function(points) {
 		$('#game_points').text(points+' puntos!').fadeIn();
+		$('#points').text( parseInt( $('#points').text() ) + parseInt(points) );
+	}
+
+	var revealRightAnswer = function(id) {
+
 	}
 
 	$.getJSON(new_question_url, function(data) {
