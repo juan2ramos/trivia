@@ -28,21 +28,32 @@ $(function()
 			timer = Math.ceil(60 - elapsed/1000);
 			$('#timer').text(timer);
 			if (timer == 0) {
-				window.clearInterval(interval);
 				$('#timer').trigger('timeout');
 			}
 		}, 100);
 	}
 
-	var answerClick = function(event) {
-		$(this).addClass('selected');
+	var timeOut = function(event) {
+		disableAnswering();
+		checkAnswer(null, 0);
+		wrongAnswer();
+		showPoints(0);
+	}
 
-		window.clearInterval(interval);
+	var answerClick = function(event) {
+		disableAnswering();
+
+		$(this).addClass('selected');
 
 		var seconds = $('#timer').text();
 		var answer_id = $(this).attr('id');
 
 		checkAnswer(answer_id, seconds);
+	}
+
+	var disableAnswering = function () {
+		$('#question-area li').off('click', answerClick);
+		window.clearInterval(interval);
 	}
 
 	var checkAnswer = function(answer_id, seconds) {
@@ -74,11 +85,7 @@ $(function()
 	$.getJSON(new_question_url, function(data) {
 		displayQuestion(data.question, data.answers);
 		startTimer();
-		$('#timer').on('timeout', function() {
-			checkAnswer(null, 0);
-			wrongAnswer();
-			showPoints(0);
-		});
+		$('#timer').on('timeout', timeOut);
 		$('#question-area li').on('click', answerClick);
 	});
 });

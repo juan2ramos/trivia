@@ -46,7 +46,6 @@ var GameController = {
 	},
 
 	answer: function (req,res) {
-		var answer_id = req.param('answer_id');
 		var points;
 		var msg;
 
@@ -54,37 +53,29 @@ var GameController = {
 			return seconds;
 		}
 
-		Answer.findByID(answer_id, function (answer) {
+		var question_id = req.param('question_id');
 
-			if (answer.correct != 1) {
-				points = 0;
-			}
-
-			var question_id = req.param('question_id');
+		Answer.findCorrect(question_id, function (answer) {
 
 			Game.alreadyPlayed(1, question_id, function (already_played) {
+				//if had already played that question, doesn't even check if it was right
 				if (already_played) {
-					points = 0;
 					msg = 'Ya habías respondido esta pregunta';
 				}
 
-				if (points !== 0) {
+				var answer_id = req.param('answer_id');
+				if (answer_id == answer.id && already_played == 0) {
 					var seconds = req.param('seconds');
 					points = calculatePoints(seconds);
-					return res.send({
-						answer: answer,
-						points: points,
-						msg: msg
-					});
-				}else{
-					Answer.findCorrect(question_id, function (answer) {
-						return res.send({
-							answer: answer,
-							points: 0,
-							msg: msg
-						});
-					});
+				} else {
+					points = 0;
 				}
+
+				return res.send({
+					answer: answer,
+					points: points,
+					msg: msg
+				});
 			});
 		});
 	}
