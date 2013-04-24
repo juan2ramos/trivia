@@ -97,7 +97,13 @@ var GameController = {
 						return res.send(err,500);
 					}
 
-					return sendAnswer(right_answer);
+					if (points == 0){
+						return sendAnswer(right_answer);
+					}
+
+					User.addPoints(points, function (output) {
+						return sendAnswer(right_answer);
+					});
 				});
 			});
 		});
