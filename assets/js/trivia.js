@@ -1,10 +1,10 @@
 $(function()
 {
-	var new_question_url = '/game/question/' + $('#trivia_title').attr('data-triviaid');
-
 	var nextQuestion = function() {
 		$('#score p').hide();
 		$('#question-area').text('...cargando...');
+
+		var new_question_url = '/game/question/' + $('#trivia_title').attr('data-triviaid');
 
 		$.getJSON(new_question_url, function(data) {
 			if (typeof data.question === "undefined") {
@@ -110,6 +110,8 @@ $(function()
 		$('#next_question').fadeIn();
 	}
 
-	nextQuestion();
-	$('#next_question button').on('click', nextQuestion);
+	if ($('#trivia_title').length > 0) {
+		nextQuestion();
+		$('#next_question button').on('click', nextQuestion);
+	}
 });
