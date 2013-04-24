@@ -7,6 +7,11 @@ $(function()
 		$('#question-area').text('...cargando...');
 
 		$.getJSON(new_question_url, function(data) {
+			if (typeof data.question === "undefined") {
+				$('#question-area').text(data.msg);
+				return;
+			}
+
 			displayQuestion(data.question, data.answers);
 			startTimer();
 			$('#timer').on('timeout', timeOut);
