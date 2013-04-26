@@ -1,6 +1,7 @@
 <header>
   <h1 id="trivia_title" data-triviaid="<%= trivia.id %>"><%= trivia.name %></h1>
   <h2><%= user.name %></h2>
+  <p><a href="/auth/logout">Cerrar sesión</a></p>
   <h3><span id="points"><%= user.points %></span> puntos</h3>
   <h4><span id="answered"><%= answered %></span> / <span id="total"><%= total %></span> preguntas</h4>
 </header>
@@ -17,3 +18,9 @@
     </div>
   </section>
 </div>
+
+<% if (user.admin == 1) { %>
+  <footer>
+    <p><a href="/trivia">Administrador de trivias</a></p>
+  </footer>
+<% } %>

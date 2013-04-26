@@ -29,7 +29,7 @@ var AuthController = {
 					return;
 				}
 
-				res.redirect('/');
+				res.redirect('/game');
 				return;
 			});
 		})(req, res);
