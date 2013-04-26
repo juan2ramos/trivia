@@ -8,7 +8,14 @@ module.exports = {
 
 		name: 'STRING',
 		password: 'STRING',
-		points: 'INTEGER'
+		points:  {
+			type: 'INTEGER',
+			defaultsTo: '0'
+		},
+		admin:  {
+			type: 'INTEGER',
+			defaultsTo: '0'
+		}
 
 	},
 

@@ -5,8 +5,14 @@
 */
 module.exports.policies = {
 
-	// Default policy (allow public access)
-	'*': 'authenticated',
+	// Anything can be accessed by admins
+	'*': 'admin',
+
+	// game can be accessed by all users
+	'game':
+	{
+		'*': 'authenticated'
+	},
 
 	// whitelist the auth controller
 	'auth':
