@@ -1,3 +1,9 @@
+<header>
+  <% if (message) { %>
+    <p class="info"><%= message %></p>
+  <% } %>
+</header>
+
 <form action="/auth/process" method="post">
 	<div>
 		<label>Username:</label>

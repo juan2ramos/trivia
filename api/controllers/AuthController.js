@@ -4,7 +4,7 @@ var AuthController = {
 
 	login: function (req,res) {
 		if (typeof req.user === "undefined"){
-			res.view();
+			res.view({ message: req.flash('message') });
 		} else {
 			res.redirect('/');
 		}
@@ -15,8 +15,7 @@ var AuthController = {
 		{
 			if ((err) || (!user))
 			{
-				console.log(err);
-				console.log(info);
+				req.flash('message', info.message);
 				res.redirect('/login');
 				return;
 			}
@@ -25,10 +24,12 @@ var AuthController = {
 			{
 				if (err)
 				{
-					res.view();
+					req.flash('message', info.message);
+					res.redirect('/login');
 					return;
 				}
 
+				req.flash('message', 'Has ingresado correctamente!');
 				res.redirect('/game');
 				return;
 			});
@@ -37,6 +38,7 @@ var AuthController = {
 
 	logout: function (req,res) {
 		req.logout();
+		req.flash('message', 'Sesión cerrada exitosamente.');
 		res.redirect('/');
 	},
 

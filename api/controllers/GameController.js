@@ -14,7 +14,8 @@ var GameController = {
 						user: req.user,
 						trivia: trivia,
 						total: total,
-						answered: answered
+						answered: answered,
+						message: req.flash('message')
 					});
 				});
 			});
