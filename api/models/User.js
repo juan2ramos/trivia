@@ -7,6 +7,7 @@ module.exports = {
 	attributes	: {
 
 		name: 'STRING',
+		password: 'STRING',
 		points: 'INTEGER'
 
 	},

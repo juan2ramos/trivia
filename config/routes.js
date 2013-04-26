@@ -27,14 +27,19 @@ module.exports.routes = {
 		controller	: 'home'
 	},
 
+	'/login' : {
+		controller	: 'auth',
+		action		: 'login'
+	},
+
 	'/game/:id' : {
 		controller	: 'game',
-		actions		: 'index'
+		action		: 'index'
 	},
 
 	'/game/question' : {
 		controller	: 'game',
-		actions		: 'question'
+		action		: 'question'
 	},
 
 	'/game/answer' : {
