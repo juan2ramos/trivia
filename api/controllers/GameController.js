@@ -7,16 +7,14 @@ var GameController = {
 	index: function (req,res) {
 		var id = req.param('id');
 
-		User.findByID(1, function (user) {
-			Trivia.findByID(id, function (trivia) {
-				Question.getCount(trivia.id, function (total) {
-					Game.gamesPlayed(user.id, trivia.id, function (answered) {
-						return res.view({
-							user: user,
-							trivia: trivia,
-							total: total,
-							answered: answered
-						});
+		Trivia.findByID(id, function (trivia) {
+			Question.getCount(trivia.id, function (total) {
+				Game.gamesPlayed(req.user.id, trivia.id, function (answered) {
+					return res.view({
+						user: req.user,
+						trivia: trivia,
+						total: total,
+						answered: answered
 					});
 				});
 			});
@@ -33,7 +31,7 @@ var GameController = {
 			};
 		};
 
-		Question.getRandom(res, trivia_id, function(question) {
+		Question.getRandom(req.user.id, trivia_id, function(question) {
 
 			if (question.length == 0) {
 				return res.send({msg: 'No hay preguntas'});
@@ -70,7 +68,7 @@ var GameController = {
 
 		Answer.findCorrect(question_id, function (right_answer) {
 
-			Game.alreadyPlayed(1, question_id, function (already_played) {
+			Game.alreadyPlayed(req.user.id, question_id, function (already_played) {
 				//if had already played that question, doesn't even check if it was right
 				if (already_played) {
 					msg = 'Ya habías respondido esta pregunta';
@@ -86,7 +84,7 @@ var GameController = {
 				}
 
 				Game.create({
-					user_id: 1,
+					user_id: req.user.id,
 					question_id: question_id,
 					answer_id: answer_id,
 					timeleft: seconds
@@ -101,7 +99,7 @@ var GameController = {
 						return sendAnswer(right_answer);
 					}
 
-					User.addPoints(points, function (output) {
+					User.addPoints(req.user.id, points, function (output) {
 						return sendAnswer(right_answer);
 					});
 				});

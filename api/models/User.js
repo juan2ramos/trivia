@@ -22,8 +22,8 @@ module.exports = {
 		});
 	},
 
-	addPoints: function (points, cb) {
-		var sql_query = 'UPDATE `user` SET points = points+'+points+' WHERE id = 1';
+	addPoints: function (id, points, cb) {
+		var sql_query = 'UPDATE user SET points = points+'+points+' WHERE id = '+id;
 
 		this.query(sql_query, function(err, data) {
 			if (err) {

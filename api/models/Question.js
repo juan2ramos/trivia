@@ -22,10 +22,10 @@ module.exports = {
 		});
 	},
 
-	getRandom: function (res, trivia_id, cb) {
+	getRandom: function (user_id, trivia_id, cb) {
 		var sql_query = 'SELECT id, question FROM question';
 		sql_query += ' WHERE trivia_id = '+trivia_id;
-		sql_query += ' AND id NOT IN (SELECT question_id FROM game WHERE user_id = 1)';
+		sql_query += ' AND id NOT IN (SELECT question_id FROM game WHERE user_id = '+user_id+')';
 		sql_query += ' ORDER BY RAND() LIMIT 1';
 
 		this.query(sql_query, function(err, question) {
