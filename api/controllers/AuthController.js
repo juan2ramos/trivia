@@ -38,6 +38,14 @@ var AuthController = {
 	logout: function (req,res) {
 		req.logout();
 		res.redirect('/');
+	},
+
+	signup: function (req,res) {
+		if (typeof req.user === "undefined"){
+			res.view();
+		} else {
+			res.redirect('/');
+		}
 	}
 
 };

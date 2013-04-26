@@ -18,6 +18,12 @@ module.exports.policies = {
 	'home':
 	{
 		'*': true
+	},
+
+	// whitelist the user create
+	'user':
+	{
+		'create': true
 	}
 
 };
