@@ -12,6 +12,12 @@ module.exports.policies = {
 	'auth':
 	{
 		'*': true
+	},
+
+	// whitelist the home controller
+	'home':
+	{
+		'*': true
 	}
 
 };
