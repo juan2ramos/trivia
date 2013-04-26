@@ -6,16 +6,12 @@
 module.exports.policies = {
 
 	// Default policy (allow public access)
-	'*': true
+	'*': 'authenticated',
 
-	/** Example mapping: 
-	someController: {
-
-		// Apply the "authenticated" policy to all actions
-		'*': 'authenticated',
-
-		// For someAction, apply 'somePolicy' instead
-		someAction: 'somePolicy'
+	// whitelist the auth controller
+	'auth':
+	{
+		'*': true
 	}
-	*/
+
 };
