@@ -8,6 +8,7 @@ module.exports = {
 
 		name: 'STRING',
 		password: 'STRING',
+		email: 'STRING',
 		points:  {
 			type: 'INTEGER',
 			defaultsTo: '0'

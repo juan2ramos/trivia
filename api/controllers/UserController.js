@@ -8,6 +8,7 @@ var UserController = {
 
 		User.create({
 			name: req.param('name'),
+			email: req.param('email'),
 			password: hashedPassword
 		}).done(function(err, question) {
 			req.flash('message', 'Tu cuenta ha sido creada existosamente!');
