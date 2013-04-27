@@ -77,8 +77,8 @@ var GameController = {
 				}
 
 				var answer_id = req.param('answer_id');
+				var seconds = req.param('seconds');
 				if (answer_id == right_answer.id) {
-					var seconds = req.param('seconds');
 					points = calculatePoints(seconds);
 				} else {
 					points = 0;

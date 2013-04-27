@@ -32,19 +32,19 @@ module.exports.routes = {
 		action		: 'login'
 	},
 
-	'/game/:id' : {
-		controller	: 'game',
-		action		: 'index'
-	},
-
-	'/game/question' : {
+	'/game/question/:id' : {
 		controller	: 'game',
 		action		: 'question'
 	},
 
 	'/game/answer' : {
 		controller	: 'game',
-		actions		: 'answer'
+		action		: 'answer'
+	},
+
+	'/game/:id' : {
+		controller	: 'game',
+		action		: 'index'
 	}
 
 	// If you want to set up a route only for a particular HTTP method/verb

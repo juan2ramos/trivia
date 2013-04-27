@@ -1,7 +1,8 @@
 $(function()
 {
 	var nextQuestion = function() {
-		$('#next_question').hide().text('Siguiente Pregunta');
+		$('#next_question').hide();
+		$('#next_question button').text('Siguiente Pregunta');
 		$('#question-area').text('...cargando...');
 
 		var new_question_url = '/game/question/' + $('#trivia_title').attr('data-triviaid');
