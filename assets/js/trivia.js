@@ -1,6 +1,7 @@
 $(function()
 {
 	var nextQuestion = function() {
+		$('#score p').hide();
 		$('#next_question').hide();
 		$('#next_question button').text('Siguiente Pregunta');
 		$('#question-area').text('...cargando...');
