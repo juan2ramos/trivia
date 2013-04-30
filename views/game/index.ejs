@@ -4,7 +4,7 @@
   <p><a href="/auth/logout">Cerrar sesión</a></p>
   <h3><span id="points"><%= user.points %></span> puntos</h3>
   <h4><span id="answered"><%= answered %></span> / <span id="total"><%= total %></span> preguntas</h4>
-  <% if (message) { %>
+  <% if (message != '') { %>
     <p class="info"><%= message %></p>
   <% } %>
 </header>

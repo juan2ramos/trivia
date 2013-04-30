@@ -1,5 +1,5 @@
 <header>
-  <% if (message) { %>
+  <% if (message != '') { %>
     <p class="info"><%= message %></p>
   <% } %>
 </header>
@@ -7,14 +7,14 @@
 <form action="/auth/process" method="post">
 	<div>
 		<label>Username:</label>
-		<input type="text" name="username"/><br/>
+		<input type="text" name="username"/>
 	</div>
 	<div>
 		<label>Password:</label>
 		<input type="password" name="password"/>
 	</div>
 	<div>
-		<input type="submit" value="Submit"/>
+		<input type="submit" value="Login"/>
 	</div>
 	<p>No account yet? <a href="/auth/signup">Sign up for free!</a></p>
 </form>

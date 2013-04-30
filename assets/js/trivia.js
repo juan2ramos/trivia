@@ -70,7 +70,7 @@ $(function()
 	}
 
 	var disableAnswering = function () {
-		$('#question-area li').off('click', answerClick);
+		$('#question-area li').off('click', answerClick).addClass('disabled');
 		window.clearInterval(interval);
 	}
 
@@ -93,12 +93,11 @@ $(function()
 	}
 
 	var wrongAnswer = function() {
-		$('li.selected').css('color', 'red');
+		$('li.selected').addClass('wrong');
 		$('#wrong_answer').fadeIn();
 	}
 
 	var rightAnswer = function() {
-		$('li.selected').css('color', 'green');
 		$('#right_answer').fadeIn();
 	}
 
@@ -108,7 +107,7 @@ $(function()
 	}
 
 	var revealRightAnswer = function(id) {
-		$('#'+id).css('color', 'green');
+		$('#'+id).addClass('right');
 		$('#next_question').fadeIn();
 	}
 

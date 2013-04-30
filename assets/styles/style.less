@@ -1,3 +1,105 @@
+@color: #20abde;
+
 body {
-	background-color: white;
+    padding: 20px;
+}
+a {
+    color: @color;
+}
+label {
+    display: inline-block;
+    margin: 10px 0;
+    text-align: right;
+    width: 30%;
+}
+input[type="submit"], form p {
+    margin-left: 30%;
+}
+
+#trivia_title {
+    color: @color;
+    text-align: center;
+}
+header p {
+    font-size: 0.8em;
+    margin: 0;
+}
+header h2 {
+    margin: 0;
+}
+header h3, header h4 {
+    display: inline-block;
+}
+header h4 {
+    background: #dee;
+    padding: 4px 8px;
+}
+
+.info {
+    background: #fed;
+    border: 1px solid #c60;
+    border-radius: 8px;
+    margin: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+#question-area {
+    display: inline-block;
+    vertical-align: bottom;
+}
+#question-area ul {
+    margin: 0;
+    padding: 0;
+}
+#question-area li {
+    border: 1px solid @color;
+    cursor: pointer;
+    list-style: none outside none;
+    margin: 10px;
+    padding: 4px 8px;
+    text-align: center;
+}
+#question-area li.selected {
+    background: #025;
+    color: #eee;
+}
+#question-area li.disabled {
+    cursor: default;
+}
+#question-area li.right {
+    border-color: lightgreen;
+    background: green;
+    color: #eee;
+}
+#question-area li.wrong {
+    border-color: pink;
+    background: red;
+    color: #eee;
+}
+
+#timer {
+    border: 8px solid @color;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 3em;
+    height: 2em;
+    line-height: 2em;
+    margin: 10px;
+    text-align: center;
+    vertical-align: middle;
+    width: 2em;
+}
+
+#right_answer {
+    color: green;
+    font-weight: bold;
+}
+#wrong_answer {
+    color: red;
+    font-weight: bold;
+}
+#game_points {
+    color: @color;
+    font-weight: bold;
 }
