@@ -44,7 +44,7 @@ var AuthController = {
 
 	signup: function (req,res) {
 		if (typeof req.user === "undefined"){
-			res.view();
+			res.view({ message: req.flash('message') });
 		} else {
 			res.redirect('/');
 		}
