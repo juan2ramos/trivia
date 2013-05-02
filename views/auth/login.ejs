@@ -6,12 +6,12 @@
 
 <form action="/auth/process" method="post">
 	<div>
-		<label>Username:</label>
-		<input type="text" name="username"/>
+		<label for="username">Username:</label>
+		<input id="username" type="text" name="username" required pattern="[a-zA-Z0-9_-]{4,32}"/>
 	</div>
 	<div>
-		<label>Password:</label>
-		<input type="password" name="password"/>
+		<label for="password">Password:</label>
+		<input for="password" type="password" name="password" required />
 	</div>
 	<div>
 		<input type="submit" value="Login"/>
