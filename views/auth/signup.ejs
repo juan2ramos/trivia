@@ -4,18 +4,19 @@
   <% } %>
 </header>
 
-<form action="/user/create" method="post">
+<form action="/user/create" method="post" class="validate-form">
 	<div>
-		<label>Username:</label>
-		<input type="text" name="name"/><br/>
+		<label for="username">Username:</label>
+		<input id="username" type="text" name="name" required pattern="[a-zA-Z0-9_-]{4,32}"/>
+		<small>Entre 4 y 32 letras y/o números</small>
 	</div>
 	<div>
-		<label>Email:</label>
-		<input type="email" name="email"/><br/>
+		<label for="email">Email:</label>
+		<input id="email" type="email" name="email" required />
 	</div>
 	<div>
-		<label>Password:</label>
-		<input type="password" name="password"/>
+		<label for="password">Password:</label>
+		<input id="password" type="password" name="password" required />
 	</div>
 	<div>
 		<input type="submit" value="Sign Up"/>

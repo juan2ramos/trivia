@@ -116,4 +116,17 @@ $(function()
 		$('#score p').hide();
 		$('#next_question button').on('click', nextQuestion);
 	}
+
+	var hasFormValidation = function() {
+		return (typeof document.createElement( 'input' ).checkValidity == 'function');
+	}
+
+	//validation using ketchup plugin
+	if( ! hasFormValidation() ) {
+		$('.validate-form').ketchup({}, {
+			'[required]': 'required',
+			'[type="email"]': 'email',
+			'#username': 'rangelength(4, 32)'
+		});
+	}
 });
