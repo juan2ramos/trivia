@@ -34,7 +34,7 @@ var GameController = {
 
 		Question.getRandom(req.user.id, trivia_id, function(question) {
 
-			if (question.length == 0) {
+			if (question.length === 0) {
 				return res.send({msg: 'No hay preguntas'});
 			}
 
@@ -55,7 +55,7 @@ var GameController = {
 
 		var calculatePoints = function (seconds) {
 			return seconds;
-		}
+		};
 
 		var sendAnswer = function (answer) {
 			return res.send({
@@ -63,7 +63,7 @@ var GameController = {
 				points: points,
 				msg: msg
 			});
-		}
+		};
 
 		var question_id = req.param('question_id');
 
@@ -96,7 +96,7 @@ var GameController = {
 						return res.send(err,500);
 					}
 
-					if (points == 0){
+					if (points === 0){
 						return sendAnswer(right_answer);
 					}
 

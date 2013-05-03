@@ -19,7 +19,7 @@ var UserController = {
 				return res.redirect('/auth/signup');
 			}
 
-		    var hashedPassword = passwordHash.generate(req.param('password'));
+            var hashedPassword = passwordHash.generate(req.param('password'));
 
 			User.create({
 				name: req.param('name'),

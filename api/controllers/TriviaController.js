@@ -27,13 +27,13 @@ var TriviaController = {
 						return res.send(err,500);
 					}
 
-					var questions_by_id = new Array();
+					var questions_by_id = [];
 
 					//array of questions with ids as keys
 					for (var i = 0; i < questions.length; i++) {
 
 						questions_by_id[questions[i].id] = questions[i];
-						questions_by_id[questions[i].id].answers = new Array();
+						questions_by_id[questions[i].id].answers = [];
 					}
 
 					//get all answers and assign them to the corresponding question...ugly
@@ -46,7 +46,7 @@ var TriviaController = {
 
 						for (var j = 0; j < answers.length; j++) {
 
-							current_question = answers[j].question_id
+							current_question = answers[j].question_id;
 
 							if (typeof questions_by_id[current_question] !== "undefined") {
 
