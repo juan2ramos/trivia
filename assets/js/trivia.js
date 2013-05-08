@@ -19,6 +19,9 @@ $(function()
 			$('#timer').on('timeout', timeOut);
 			$('#question-area li').on('click', answerClick);
 		});
+
+		//preload audio
+		$(document).trigger('initAudio');
 	}
 
 	var displayQuestion = function(question, answers) {
@@ -66,6 +69,8 @@ $(function()
 		var seconds = $('#timer').text();
 		var answer_id = $(this).attr('id');
 
+		$.mbAudio.play('select');
+
 		checkAnswer(answer_id, seconds);
 	}
 
@@ -95,10 +100,14 @@ $(function()
 	var wrongAnswer = function() {
 		$('li.selected').addClass('wrong');
 		$('#wrong_answer').fadeIn();
+		$.mbAudio.stop('select');
+		$.mbAudio.play('wrong');
 	}
 
 	var rightAnswer = function() {
 		$('#right_answer').fadeIn();
+		$.mbAudio.stop('select');
+		$.mbAudio.play('right');
 	}
 
 	var addPoints = function(points) {
@@ -117,6 +126,7 @@ $(function()
 		$('#next_question button').on('click', nextQuestion);
 	}
 
+	//VALIDATION
 	var hasFormValidation = function() {
 		return (typeof document.createElement( 'input' ).checkValidity == 'function');
 	}
@@ -129,4 +139,25 @@ $(function()
 			'#username': 'rangelength(4, 32)'
 		});
 	}
+
+	//SOUND EFFECTS
+	$.mbAudio.sounds = {
+
+		select: {
+			id: "select",
+			mp3: "/sounds/162462__kastenfrosch__secret.mp3"
+		},
+		wrong: {
+			id: "wrong",
+			mp3: "/sounds/162465__kastenfrosch__lostitem.mp3"
+		},
+		right: {
+			id: "right",
+			mp3: "/sounds/162467__kastenfrosch__gotitem.mp3"
+		},
+	};
+
+	$(document).on("initAudio", function () {
+		$.mbAudio.preload();
+	});
 });
