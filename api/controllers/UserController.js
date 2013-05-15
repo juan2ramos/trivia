@@ -26,7 +26,7 @@ var UserController = {
 				email: req.param('email'),
 				password: hashedPassword
 			}).done(function(err, user) {
-				req.flash('message', 'Tu cuenta ha sido creada existosamente!');
+				req.flash('message', 'Tu cuenta ha sido creada exitosamente!');
 				return res.redirect('/');
 			});
 		});
