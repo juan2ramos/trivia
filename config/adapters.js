@@ -5,7 +5,7 @@ module.exports.adapters = {
 
 	// If you leave the adapter config unspecified
 	// in a model definition, 'default' will be used.
-	'default': 'mongo',
+	'default': process.env.ADAPTERS_DEFAULT || 'mongo',
 
 	mongo: {
 		module   : 'sails-mongo',
@@ -34,9 +34,9 @@ module.exports.adapters = {
 	// Learn more: http://en.wikipedia.org/wiki/MySQL
 	mysql: {
 		module		: 'sails-mysql',
-		host		: '',
-		user		: '',
-		password	: '',
-		database	: ''
+		host		: process.env.MYSQL_HOST,
+		user		: process.env.MYSQL_USER,
+		password	: process.env.MYSQL_PASS,
+		database	: process.env.MYSQL_DB
 	}
 };
