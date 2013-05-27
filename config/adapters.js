@@ -11,7 +11,7 @@ module.exports.adapters = {
 		module   : 'sails-mongo',
 		url      : process.env.MONGOLAB_URI || 'mongodb://localhost:27017/sails'
 	},
-	
+
 	// In-memory adapter for DEVELOPMENT ONLY
 	// (data is NOT preserved when the server shuts down)
 	memory: {
@@ -34,9 +34,9 @@ module.exports.adapters = {
 	// Learn more: http://en.wikipedia.org/wiki/MySQL
 	mysql: {
 		module		: 'sails-mysql',
-		host		: 'localhost',
-		user		: 'root',
-		password	: '123456',
-		database	: 'epa_trivia'
+		host		: '',
+		user		: '',
+		password	: '',
+		database	: ''
 	}
 };
