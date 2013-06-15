@@ -1,0 +1,29 @@
+########################
+# sails
+########################
+.sails
+.waterline
+.rigging
+.tmp
+
+########################
+# misc / editors
+########################
+*~
+*#
+.DS_STORE
+.netbeans
+nbproject
+.idea
+.c9revisions
+
+########################
+# local config
+########################
+config/local.js
+
+########################
+# git and dot
+########################
+.*
+!.app.js
