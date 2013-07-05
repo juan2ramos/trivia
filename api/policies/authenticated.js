@@ -1,16 +1,29 @@
 /**
 * Allow any authenticated user.
 */
+var passport = require('passport');
+
 module.exports = function (req,res,ok) {
 
-	// User is allowed, proceed to controller
-	if (req.isAuthenticated()) {
-		return ok();
-	}
+	passport.authenticate('cookie', function(err, user, info)
+	{
+		if ((err) || (!user))
+		{
+			req.flash('message', info.message);
+			res.redirect('/');
+			return;
+		}
 
-	// User is not allowed
-	else {
-		//return res.send("You are not permitted to perform this action.",403);
-		res.redirect('/login');
-	}
+		req.login(user, function(err)
+		{
+			if (err)
+			{
+				req.flash('message', info.message);
+				res.redirect('/');
+				return;
+			}
+
+			return ok();
+		});
+	})(req, res);
 };

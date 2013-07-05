@@ -1,6 +1,6 @@
 // config/application.js
 var passport = require('passport')
-var LocalStrategy = require('passport-local').Strategy;
+var CookieStrategy = require('passport-cookie').Strategy;
 var passwordHash = require('password-hash');
 
 // Passport session setup.
@@ -18,28 +18,33 @@ passport.deserializeUser(function(id, done) {
 	});
 });
 
-// Use the LocalStrategy within Passport.
+// Use the CookieStrategy within Passport.
 // Strategies in passport require a `verify` function, which accept
-// credentials (in this case, a username and password), and invoke a callback
+// credentials (in this case, a username and userid), and invoke a callback
 // with a user object.
-passport.use(new LocalStrategy(
-	function(username, password, done) {
+passport.use(new CookieStrategy({
+		usernameCookie: 'exp__screen_name',
+		useridCookie: 'exp__member_id'
+	},
+	function(username, userid, done) {
 		// asynchronous verification, for effect...
 		process.nextTick(function () {
 
-			// Find the user by username. If there is no user with the given
-			// username, or the password is not correct, set the user to `false` to
-			// indicate failure and set a flash message. Otherwise, return the
-			// authenticated `user`.
 			User.findByName(username, function(err, user) {
-				if (err) { return done(err); }
-				if (!user) {
-					return done(null, false, { message: 'Unknown user ' + username });
+				if (err) {
+					return done(err);
 				}
-				if ( ! passwordHash.verify(password, user.password) ) {
-					return done(null, false, { message: 'Invalid password' });
+
+				if (user) {
+					return done(null, user);
+				} else {
+					User.create({
+						id: userid,
+						name: username
+					}).done(function(err, user) {
+						return done(null, user);
+					});
 				}
-				return done(null, user);
 			})
 		});
 	}
@@ -49,6 +54,8 @@ module.exports = {
 
 	// Name of the application (used as default <title>)
 	appName: "Sails Application",
+
+	host: process.env.VCAP_APP_HOST || 'trivia.epa.8manos.in',
 
 	// Port this Sails application will live on
 	port: process.env.VMC_APP_PORT || 1337,
