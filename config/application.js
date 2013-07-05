@@ -1,7 +1,6 @@
 // config/application.js
 var passport = require('passport')
 var CookieStrategy = require('passport-cookie').Strategy;
-var passwordHash = require('password-hash');
 
 // Passport session setup.
 // To support persistent login sessions, Passport needs to be able to
@@ -24,9 +23,10 @@ passport.deserializeUser(function(id, done) {
 // with a user object.
 passport.use(new CookieStrategy({
 		usernameCookie: 'exp__screen_name',
-		useridCookie: 'exp__member_id'
+		useridCookie: 'exp__member_id',
+		passReqToCallback: true
 	},
-	function(username, userid, done) {
+	function(req, username, userid, done) {
 		// asynchronous verification, for effect...
 		process.nextTick(function () {
 
@@ -38,9 +38,14 @@ passport.use(new CookieStrategy({
 				if (user) {
 					return done(null, user);
 				} else {
+					var ee_group = req.cookies.exp__group_title;
+					var admin = ee_group.search(/admin/i) == -1 ? 0 : 1;//check if it's an admin
+
 					User.create({
 						id: userid,
-						name: username
+						name: username,
+						email: req.cookies.exp__email,
+						admin: admin
 					}).done(function(err, user) {
 						return done(null, user);
 					});
