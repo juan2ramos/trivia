@@ -1,5 +1,3 @@
-var passwordHash = require('password-hash');
-
 var UserController = {
 
 	create: function (req,res) {
@@ -19,12 +17,10 @@ var UserController = {
 				return res.redirect('/auth/signup');
 			}
 
-            var hashedPassword = passwordHash.generate(req.param('password'));
-
 			User.create({
 				name: req.param('name'),
 				email: req.param('email'),
-				password: hashedPassword
+				password: req.param('password')
 			}).done(function(err, user) {
 				req.flash('message', 'Tu cuenta ha sido creada exitosamente!');
 				return res.redirect('/');
