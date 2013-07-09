@@ -30,12 +30,13 @@ passport.use(new CookieStrategy({
 		// asynchronous verification, for effect...
 		process.nextTick(function () {
 
-			User.findByName(username, function(err, user) {
+			User.find(userid, function(err, user) {
 				if (err) {
 					return done(err);
 				}
 
 				if (user) {
+					//todo: if email or username have changed, update user in trivia db
 					return done(null, user);
 				} else {
 					var ee_group = req.cookies.exp__group_title;
