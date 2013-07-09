@@ -12,6 +12,7 @@ var GameController = {
 				Game.gamesPlayed(req.user.id, trivia.id, function (answered) {
 					return res.view({
 						user: req.user,
+						avatar_url: req.cookies.exp__avatar_url,
 						trivia: trivia,
 						total: total,
 						answered: answered,
