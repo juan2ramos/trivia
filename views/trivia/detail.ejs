@@ -5,13 +5,13 @@
 
 	<h3>Preguntas:</h3>
 	<ul>
-	<% _.each(questions, function (question) { %>
+	<% questions.forEach(function(question) { %>
 		<li>
 			<a href="/question/destroy/<%= question.id %>">x</a>
 			<a href="/question/edit/<%= question.id %>"><%= question.question %></a>
 
 			<ul>
-			<% _.each(question.answers, function (answer) { %>
+			<% question.answers.forEach(function(answer) { %>
 				<li>
 				<% if (answer.correct === 1) { %>
 			    	<mark><%= answer.answer %></mark>

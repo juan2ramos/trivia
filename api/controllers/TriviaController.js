@@ -42,15 +42,13 @@ var TriviaController = {
 							return res.send(err,500);
 						}
 
-						var current_question;
-
 						for (var j = 0; j < answers.length; j++) {
 
-							current_question = answers[j].question_id;
+							var question_id = answers[j].question_id;
 
-							if (typeof questions_by_id[current_question] !== "undefined") {
+							if (typeof questions_by_id[question_id] !== "undefined") {
 
-								questions_by_id[current_question].answers.push(answers[j]);
+								questions_by_id[question_id].answers.push(answers[j]);
 							}
 						}
 
