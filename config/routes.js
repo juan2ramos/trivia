@@ -45,6 +45,11 @@ module.exports.routes = {
 	'/game/:id' : {
 		controller	: 'game',
 		action		: 'index'
+	},
+
+	'hookshot' : {
+		controller	: 'hookshot',
+		action		: 'index'
 	}
 
 	// If you want to set up a route only for a particular HTTP method/verb
