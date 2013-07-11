@@ -1,10 +1,10 @@
 /*---------------------
-	:: Answer
+	:: Home
 	-> controller
 ---------------------*/
-var AnswerController = {
+var HomeController = {
 	index: function (req,res) {
 		res.view({ message: req.flash('message') });
 	}
 };
-module.exports = AnswerController;
+module.exports = HomeController;
