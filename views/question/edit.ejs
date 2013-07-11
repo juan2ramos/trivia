@@ -1,0 +1,23 @@
+<form method="post" action="/question/update">
+	<p>
+		<label for="question">Pregunta:</label>
+		<input type="text" name="question" id="question" value="<%= question.question %>" />
+	</p>
+	<table>
+		<tr>
+			<th>Respuestas</th>
+			<th>Correcta</th>
+		</tr>
+		<% _.each(answers, function (answer) { %>
+		<tr>
+			<td><input type="text" name="answer_<%= answer.id %>" value="<%= answer.answer %>" /></td>
+			<td><input type="radio" name="correct" value="<%= answer.id %>" <% if (answer.correct === 1) { %>checked<% } %> /></td>
+		</tr>
+		<% }) %>
+	</table>
+	<div class="form-actions">
+		<input type="hidden" name="id" value="<%= question.id %>" />
+		<input type="hidden" name="trivia_id" value="<%= question.trivia_id %>" />
+		<input type="submit" value="Guardar" />
+	</div>
+</form>

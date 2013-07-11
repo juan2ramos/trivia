@@ -4,7 +4,7 @@
 ---------------------*/
 var QuestionController = {
 
-	detail: function (req,res) {
+	edit: function (req,res) {
 		var id = req.param('id');
 		Question.findByID(id, function (question) {
 			Answer.findByQuestion(question.id, function (answers) {
@@ -44,11 +44,7 @@ var QuestionController = {
 				answer = req.param('answer_'+i);
 				if (answer.length > 0) {
 					//is it the correct answer?
-					if (i == req.param('correct')) {
-						correct = true;
-					}else{
-						correct = false;
-					}
+					correct = (i == req.param('correct')) ? true : false;
 
 					Answer.create({
 						answer: answer,
@@ -67,7 +63,42 @@ var QuestionController = {
 			console.log('...redirecting...');
 			return res.redirect('/trivia/detail/'+question.trivia_id);
 		});
-	}
+	},
 
+	update: function (req,res) {
+
+		Question.update({id: req.param('id')}, {question: req.param('question')}, function(err, question) {
+			// Error handling
+			if (err) {
+				return res.send(err,500);
+			}
+
+			// The Question was updated successfully!
+			console.log("Question updated:", question);
+		});
+
+		Answer.findByQuestion(req.param('id'), function (answers) {
+			answers.forEach(function logArrayElements(old_answer, index) {
+				var answer_id = old_answer.id;
+				var correct = (answer_id == req.param('correct')) ? true : false;
+
+				var new_answer = {
+					answer: req.param('answer_'+answer_id),
+					question_id: req.param('id'),
+					correct: correct
+				};
+
+				Answer.update({id: answer_id}, new_answer, function(err, answer) {
+					if (err) {
+						return res.send(err,500);
+					}
+					console.log("Answer updated:", answer);
+				});
+			});
+		});
+
+		console.log('...redirecting...');
+		return res.redirect('/trivia/detail/'+req.param('trivia_id'));
+	}
 };
 module.exports = QuestionController;

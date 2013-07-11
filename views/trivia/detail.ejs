@@ -8,7 +8,7 @@
 	<% _.each(questions, function (question) { %>
 		<li>
 			<a href="/question/destroy/<%= question.id %>">x</a>
-			<a href="/question/detail/<%= question.id %>"><%= question.question %></a>
+			<a href="/question/edit/<%= question.id %>"><%= question.question %></a>
 
 			<ul>
 			<% _.each(question.answers, function (answer) { %>
