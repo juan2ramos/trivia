@@ -35,7 +35,7 @@ var GameController = {
 		Question.getRandom(req.user.id, trivia_id, function(question) {
 
 			if (question.length === 0) {
-				return res.send({msg: 'No hay preguntas'});
+				return res.send({msg: 'No hay más preguntas'});
 			}
 
 			Answer.findByQuestion(question[0].id, function (answers) {
@@ -50,7 +50,7 @@ var GameController = {
 	},
 
 	answer: function (req,res) {
-		var points;
+		var points = 0;
 		var msg;
 
 		var calculatePoints = function (seconds) {
@@ -68,6 +68,11 @@ var GameController = {
 		var question_id = req.param('question_id');
 
 		Answer.findCorrect(question_id, function (right_answer) {
+			//if there was no correct answer, just return
+			if (right_answer.id == -1) {
+				msg = 'Lo sentimos, ninguna respuesta es correcta.';
+				return sendAnswer(right_answer);
+			}
 
 			Game.alreadyPlayed(req.user.id, question_id, function (already_played) {
 				//if had already played that question, doesn't even check if it was right
@@ -80,8 +85,6 @@ var GameController = {
 				var seconds = req.param('seconds');
 				if (answer_id == right_answer.id) {
 					points = calculatePoints(seconds);
-				} else {
-					points = 0;
 				}
 
 				Game.create({
