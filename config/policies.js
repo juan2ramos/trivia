@@ -26,6 +26,12 @@ module.exports.policies = {
 		'*': true
 	},
 
+	// whitelist the hookshot controller
+	'hookshot':
+	{
+		'*': true
+	},
+
 	// whitelist the user create
 	'user':
 	{
