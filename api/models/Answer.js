@@ -36,8 +36,10 @@ module.exports = {
 		this.findAll({ question_id: question_id, correct: 1 }).done(function (err, answers) {
 			if (err) {
 				return res.send(err, 500);
-			} else {
+			} else if (answers.length > 0) {
 				cb(answers[0]);
+			} else {
+				cb({ answer: 'no correct answer', id: -1 });
 			}
 		});
 	}
