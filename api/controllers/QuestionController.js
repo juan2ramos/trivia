@@ -72,9 +72,6 @@ var QuestionController = {
 			if (err) {
 				return res.send(err,500);
 			}
-
-			// The Question was updated successfully!
-			console.log("Question updated:", question);
 		});
 
 		Answer.findByQuestion(req.param('id'), function (answers) {
@@ -92,7 +89,6 @@ var QuestionController = {
 					if (err) {
 						return res.send(err,500);
 					}
-					console.log("Answer updated:", answer);
 				});
 			});
 		});
