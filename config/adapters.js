@@ -34,10 +34,10 @@ module.exports.adapters = {
 	// Learn more: http://en.wikipedia.org/wiki/MySQL
 	mysql: {
 		module		: 'sails-mysql',
-		host		: process.env.VCAP_SERVICES.hostname,
-		user		: process.env.VCAP_SERVICES.user,
-		password	: process.env.VCAP_SERVICES.password,
-		database	: process.env.VCAP_SERVICES.name,
+		host		: '',
+		user		: '',
+		password	: '',
+		database	: '',
 		migrate		: process.env.MIGRATE || 'alter'
 	}
 };
