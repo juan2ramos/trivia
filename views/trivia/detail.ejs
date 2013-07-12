@@ -1,5 +1,8 @@
 <div>
-	<h1><%= trivia.name %></h1>
+	<h1>
+		<%= trivia.name %>
+		<small><a href="/trivia/edit/<%= trivia.id %>">editar</a></small>
+	</h1>
 
 	<p><a href="/question/add/<%= trivia.id %>" class="button">Agregar pregunta</a></p>
 
