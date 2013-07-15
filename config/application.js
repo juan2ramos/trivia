@@ -1,5 +1,6 @@
 // config/application.js
-var passport = require('passport')
+var hookshot = require('hookshot');
+var passport = require('passport');
 var CookieStrategy = require('passport-cookie').Strategy;
 
 // Passport session setup.
@@ -91,6 +92,9 @@ module.exports = {
 	express: {
 		customMiddleware: function(app)
 		{
+			var branch = 'epa';
+			app.use('/hksht', hookshot('refs/heads/'+branch, 'git pull origin '+branch+' && forever restart .app.js'));
+
 			app.use(passport.initialize());
 			app.use(passport.session());
 		}
