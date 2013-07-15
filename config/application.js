@@ -84,7 +84,7 @@ module.exports = {
 	// - verbose
 	//
 	log: {
-		level: process.env.LOG_LEVEL || 'debug'
+		level: process.env.LOG_LEVEL || 'verbose'
 	},
 
 	// Custom express middleware - we use this to register the passport middleware
