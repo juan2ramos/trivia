@@ -47,7 +47,7 @@ module.exports.routes = {
 		action		: 'index'
 	},
 
-	'hookshot' : {
+	'/hookshot' : {
 		controller	: 'hookshot',
 		action		: 'index'
 	}
