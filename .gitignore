@@ -44,3 +44,6 @@ nbproject
 config/local.js
 
 !node_modules/passport-cookie
+!node_modules/hookshot
+node_modules/hookshot/*
+!node_modules/hookshot/lib
