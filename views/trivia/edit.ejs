@@ -1,0 +1,10 @@
+<form method="post" action="/trivia/update">
+	<div>
+		<label for="name">Nombre de la Trivia:</label>
+		<input type="text" name="name" id="name" value="<%= trivia.name %>" />
+	</div>
+	<div class="form-actions">
+		<input type="hidden" name="id" value="<%= trivia.id %>" />
+		<input type="submit" value="Guardar" />
+	</div>
+</form>

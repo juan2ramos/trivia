@@ -64,6 +64,17 @@ var TriviaController = {
 				res.redirect('/trivia');
 			}
 		});
+	},
+
+	edit: function (req, res) {
+		var id = req.param('id');
+		Trivia.findByID(id, function (trivia) {
+			if (trivia) {
+				return res.view({ trivia: trivia });
+			} else {
+				res.redirect('/trivia');
+			}
+		});
 	}
 
 };
