@@ -5,13 +5,13 @@
 	</p>
 	<table>
 		<tr>
-			<th>Respuestas</th>
 			<th>Correcta</th>
+			<th>Respuestas</th>
 		</tr>
 		<% _.each(answers, function (answer) { %>
 		<tr>
-			<td><input type="text" name="answer_<%= answer.id %>" value="<%= answer.answer %>" /></td>
 			<td><input type="radio" name="correct" value="<%= answer.id %>" <% if (answer.correct === 1) { %>checked<% } %> /></td>
+			<td><input type="text" name="answer_<%= answer.id %>" value="<%= answer.answer %>" /></td>
 		</tr>
 		<% }) %>
 	</table>

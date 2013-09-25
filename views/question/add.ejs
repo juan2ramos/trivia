@@ -1,28 +1,24 @@
-<form method="post" action="/question/create">
+<form method="post" action="/question/create" class="box">
 	<p>
 		<label for="question">Pregunta:</label>
 		<input type="text" name="question" id="question" />
 	</p>
 	<table>
 		<tr>
-			<th>Respuestas</th>
 			<th>Correcta</th>
+			<th>Respuestas</th>
 		</tr>
 		<tr>
-			<td><input type="text" name="answer_1" /></td>
 			<td><input type="radio" name="correct" value="1" checked /></td>
+			<td><input type="text" name="answer_1" /></td>
 		</tr>
 		<tr>
-			<td><input type="text" name="answer_2" /></td>
 			<td><input type="radio" name="correct" value="2" /></td>
+			<td><input type="text" name="answer_2" /></td>
 		</tr>
 		<tr>
-			<td><input type="text" name="answer_3" /></td>
 			<td><input type="radio" name="correct" value="3" /></td>
-		</tr>
-		<tr>
-			<td><input type="text" name="answer_4" /></td>
-			<td><input type="radio" name="correct" value="4" /></td>
+			<td><input type="text" name="answer_3" /></td>
 		</tr>
 	</table>
 	<div class="form-actions">
