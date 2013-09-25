@@ -2,8 +2,7 @@ $(function()
 {
 	var nextQuestion = function() {
 		$('#timer').show();
-		$('#score p').hide();
-		$('#next_question').hide();
+		$('#welcome, #score p, #next_question').hide();
 		$('#next_question button').text('Siguiente Pregunta');
 		$('#question-area').text('...cargando...');
 

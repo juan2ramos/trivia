@@ -30,7 +30,7 @@ p {
 }
 button {
     background: #fd0;
-    border-radius: 20px;
+    border-radius: 15px;
     border: 0;
     font-weight: bold;
     padding: 4px 20px;
@@ -103,39 +103,41 @@ button {
     font-size: 1.2em;
 }
 
-
-#question-area {
-    display: inline-block;
-    vertical-align: bottom;
+#question-area h1 {
+    font-size: 1.5em;
+    font-weight: normal;
+    margin: 0;
 }
 #question-area ul {
     margin: 0;
     padding: 0;
 }
 #question-area li {
+    border-radius: 15px;
     border: 1px solid @color;
     cursor: pointer;
+    font-size: 1.2em;
     list-style: none outside none;
-    margin: 10px;
+    margin: 15px 0;
     padding: 4px 8px;
     text-align: center;
 }
+#question-area li:hover,
 #question-area li.selected {
-    background: #025;
-    color: #eee;
+    background: @color;
+    color: #000;
 }
 #question-area li.disabled {
     cursor: default;
 }
 #question-area li.right {
-    border-color: lightgreen;
-    background: green;
-    color: #eee;
+    border: 0;
+    background: #cdb101;
+    color: #000;
 }
 #question-area li.wrong {
-    border-color: pink;
-    background: red;
-    color: #eee;
+    border: 0;
+    background: #f00;
 }
 
 #timer {
