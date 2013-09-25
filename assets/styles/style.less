@@ -1,6 +1,14 @@
-@color: #20abde;
+@color: #fd0;
 
+html {
+    height: 100%;
+}
 body {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: url("http://elparlanteamarillo.com/static/images/fondo-trama.png") repeat fixed;
+    color: #fff;
+    min-height: 100%;
     padding: 20px;
 }
 a {
@@ -14,6 +22,13 @@ label {
 }
 input[type="submit"], form p {
     margin-left: 30%;
+}
+
+#header a {
+    background: url('http://elparlanteamarillo.com/static/images/logo.png') no-repeat -26px -29px;
+    display: block;
+    width: 448px;
+    height: 139px;
 }
 
 #trivia_title {
@@ -36,8 +51,8 @@ header h4 {
 }
 
 .info {
-    background: #fed;
-    border: 1px solid #c60;
+    background: #933;
+    border: 1px solid #c30;
     border-radius: 8px;
     margin: 20px;
     padding: 10px;
@@ -102,4 +117,30 @@ header h4 {
 #game_points {
     color: @color;
     font-weight: bold;
+}
+
+/* ==========================================================================
+   Helpers
+   ========================================================================== */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+}
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+.box {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    box-shadow: 0 1px 10px 1px #0A0A0A;
+    margin: 20px 0;
+    padding: 20px;
 }
