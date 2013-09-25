@@ -3,10 +3,18 @@
     <a href="http://elparlanteamarillo.com/" class="ir">El Parlante Amarillo</a>
   </h1>
 
-  <div id="account-nav">
-    <h3><img src="<%= avatar_url %>" /><%= user.name %></h3>
-    <h2><span id="points"><%= user.points %></span> puntos</h2>
-    <h4><span id="answered"><%= answered %></span> / <span id="total"><%= total %></span> preguntas</h4>
+  <div id="account-nav" class="box">
+    <h3><img src="<%= avatar_url %>" class="small-avatar"/><%= user.name %></h3>
+    <h2>
+      <span id="points"><%= user.points %></span>
+      <br />
+      puntos
+    </h2>
+    <h2>
+      <span id="answered"><%= answered %></span> / <span id="total"><%= total %></span>
+      <br />
+      preguntas
+    </h2>
   </div>
 
   <% if (message != '') { %>
@@ -14,15 +22,15 @@
   <% } %>
 </header>
 
-<div id="trivia-title">
+<div id="trivia-info">
   <h1>¿Sabes cuanto sabes?</h1>
   <h2 id="trivia_title" data-triviaid="<%= trivia.id %>"><%= trivia.name %></h2>
   <h3>Trivia</h3>
 </div>
 
-<div id="game-area">
+<div id="game-area" class="box">
   <div id="welcome">
-    <h1><img src="<%= avatar_url %>" /><%= user.name %></h1>
+    <h1><img src="<%= avatar_url %>" class="mid-avatar" /><%= user.name %></h1>
 
     <p>Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is advertised as the most popular gun in American crime. Do you believe that shit? It actually says that in the little book that comes with it: the most popular gun in American crime. Like they're actually proud of that shit.</p>
   </div>

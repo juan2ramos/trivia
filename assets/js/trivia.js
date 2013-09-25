@@ -1,6 +1,7 @@
 $(function()
 {
 	var nextQuestion = function() {
+		$('#timer').show();
 		$('#score p').hide();
 		$('#next_question').hide();
 		$('#next_question button').text('Siguiente Pregunta');
@@ -43,10 +44,10 @@ $(function()
 
 	var startTimer = function() {
 		var start = new Date().getTime();
-		var timer = 60;
+		var timer = 600;
 		interval = window.setInterval(function() {
 			var elapsed = new Date().getTime() - start;
-			timer = Math.ceil(60 - elapsed/1000);
+			timer = Math.ceil(600 - elapsed/1000);
 			$('#timer').text(timer);
 			if (timer == 0) {
 				$('#timer').trigger('timeout');
@@ -122,7 +123,7 @@ $(function()
 
 	if ($('#trivia_title').length > 0) {
 		//nextQuestion();
-		$('#score p').hide();
+		$('#score p, #timer').hide();
 		$('#next_question button').on('click', nextQuestion);
 	}
 

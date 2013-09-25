@@ -8,6 +8,7 @@ body {
     box-sizing: border-box;
     background: url("http://elparlanteamarillo.com/static/images/fondo-trama.png") repeat fixed;
     color: #fff;
+    font-family: "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
     min-height: 100%;
     padding: 20px;
 }
@@ -23,31 +24,56 @@ form td {
     text-align: right;
     padding: 2px 8px;
 }
+p {
+    color: #eee;
+    line-height: 1.33em;
+}
+button {
+    background: #fd0;
+    border-radius: 20px;
+    border: 0;
+    font-weight: bold;
+    padding: 4px 20px;
+    text-transform: uppercase;
+}
 
+#header {
+    margin-top: 0;
+}
 #header a {
-    background: url('http://elparlanteamarillo.com/static/images/logo.png') no-repeat -26px -29px;
+    background: url('http://elparlanteamarillo.com/static/images/logo.png') no-repeat -26px -358px;
     display: block;
-    width: 448px;
-    height: 139px;
+    width: 276px;
+    height: 96px;
 }
 
-#trivia_title {
+#account-nav {
+    padding: 0 20px;
+}
+#account-nav h3 {
     color: @color;
-    text-align: center;
-}
-header p {
-    font-size: 0.8em;
-    margin: 0;
-}
-header h2 {
-    margin: 0;
-}
-header h3, header h4 {
     display: inline-block;
+    margin: 10px 10px 10px 0;
+    vertical-align: middle;
 }
-header h4 {
-    background: #dee;
-    padding: 4px 8px;
+.small-avatar {
+    height: 32px;
+    padding-right: 10px;
+    vertical-align: middle;
+    width: auto;
+}
+#account-nav h2 {
+    background: rgba(204,176,0,0.9);
+    color: #000;
+    display: inline-block;
+    font-size: 0.9em;
+    margin: 0;
+    padding: 10px 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+#points, #answered, #total {
+    font-size: 1.7em;
 }
 
 .info {
@@ -58,6 +84,25 @@ header h4 {
     padding: 10px;
     text-align: center;
 }
+
+#trivia-info {
+    text-align: right;
+}
+#trivia_title {
+    color: @color;
+}
+
+.mid-avatar {
+    float: left;
+    height: auto;
+    padding-right: 10px;
+    width: 80px;
+}
+#welcome h1 {
+    color: @color;
+    font-size: 1.2em;
+}
+
 
 #question-area {
     display: inline-block;
