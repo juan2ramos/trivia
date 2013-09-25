@@ -1,16 +1,36 @@
 <header>
-  <h1 id="trivia_title" data-triviaid="<%= trivia.id %>"><%= trivia.name %></h1>
-  <h2><img src="<%= avatar_url %>" /><%= user.name %></h2>
-  <h3><span id="points"><%= user.points %></span> puntos</h3>
-  <h4><span id="answered"><%= answered %></span> / <span id="total"><%= total %></span> preguntas</h4>
+  <h1 id="header">
+    <a href="http://elparlanteamarillo.com/" class="ir">El Parlante Amarillo</a>
+  </h1>
+
+  <div id="account-nav">
+    <h3><img src="<%= avatar_url %>" /><%= user.name %></h3>
+    <h2><span id="points"><%= user.points %></span> puntos</h2>
+    <h4><span id="answered"><%= answered %></span> / <span id="total"><%= total %></span> preguntas</h4>
+  </div>
+
   <% if (message != '') { %>
     <p class="info"><%= message %></p>
   <% } %>
 </header>
 
-<div>
+<div id="trivia-title">
+  <h1>¿Sabes cuanto sabes?</h1>
+  <h2 id="trivia_title" data-triviaid="<%= trivia.id %>"><%= trivia.name %></h2>
+  <h3>Trivia</h3>
+</div>
+
+<div id="game-area">
+  <div id="welcome">
+    <h1><img src="<%= avatar_url %>" /><%= user.name %></h1>
+
+    <p>Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is advertised as the most popular gun in American crime. Do you believe that shit? It actually says that in the little book that comes with it: the most popular gun in American crime. Like they're actually proud of that shit.</p>
+  </div>
+
   <div id="question-area"></div>
+
   <div id="timer">60</div>
+
   <section id="score">
     <p id="right_answer">Respuesta Correcta!</p>
     <p id="wrong_answer">Respuesta Incorrecta!</p>
@@ -21,8 +41,9 @@
   </section>
 </div>
 
+<footer id="footer">
 <% if (user.admin == 1) { %>
-  <footer>
-    <p><a href="/trivia">Administrador de trivias</a></p>
-  </footer>
+  <p><a href="/trivia">Administrador de trivias</a></p>
 <% } %>
+  <p>Copyright &copy; 2009 - 2013 - El Parlante Amarillo - Producción audiovisual por <a target="_blank" href="http://www.velouriatv.com/">Velouria TV</a> - Desarrollo web por <a target="_blank" href="http://8manos.com">∞manos</a></p>
+</footer>
