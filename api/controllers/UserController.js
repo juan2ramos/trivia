@@ -5,7 +5,7 @@ var UserController = {
 		var name = req.param('name');
 		var email = req.param('email');
 
-		User.findAll({ or: [{name: name}, {email: email}] }).done(function(err, users) {
+		User.find({ or: [{name: name}, {email: email}] }).done(function(err, users) {
 
 			if (users.length > 0) {
 				if (users[0].name == name) {

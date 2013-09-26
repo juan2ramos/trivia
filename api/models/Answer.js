@@ -13,7 +13,7 @@ module.exports = {
 	},
 
 	findByID: function (id, cb) {
-		this.find(id).done(function (err, answer) {
+		this.findOne(id).done(function (err, answer) {
 			if (err) {
 				return res.send(err,500);
 			} else {
@@ -23,7 +23,7 @@ module.exports = {
 	},
 
 	findByQuestion: function (question_id, cb) {
-		this.findAll({ question_id: question_id }).done(function (err, answers) {
+		this.find({ question_id: question_id }).done(function (err, answers) {
 			if (err) {
 				return res.send(err, 500);
 			} else {
@@ -33,7 +33,7 @@ module.exports = {
 	},
 
 	findCorrect: function (question_id, cb) {
-		this.findAll({ question_id: question_id, correct: 1 }).done(function (err, answers) {
+		this.find({ question_id: question_id, correct: 1 }).done(function (err, answers) {
 			if (err) {
 				return res.send(err, 500);
 			} else if (answers.length > 0) {

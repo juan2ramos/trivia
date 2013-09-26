@@ -15,7 +15,7 @@ module.exports = function (req,res,ok) {
 
 		req.login(user, function(err) {
 			if (err) {
-				req.flash('message', err);
+				req.flash('message', err.toString());
 				res.redirect('/');
 				return;
 			}

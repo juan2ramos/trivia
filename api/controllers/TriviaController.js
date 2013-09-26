@@ -5,7 +5,7 @@
 var TriviaController = {
 
 	index: function(req, res) {
-		Trivia.findAll().done(function (err, trivias) {
+		Trivia.find().done(function (err, trivias) {
 			if (err) {
 				return res.send(err,500);
 			}
@@ -22,7 +22,7 @@ var TriviaController = {
 
 			if (trivia) {
 
-				Question.findAll({ trivia_id: trivia.id }).done(function (err, questions) {
+				Question.find({ trivia_id: trivia.id }).done(function (err, questions) {
 					if (err) {
 						return res.send(err,500);
 					}
@@ -37,7 +37,7 @@ var TriviaController = {
 					}
 
 					//get all answers and assign them to the corresponding question...ugly
-					Answer.findAll().done(function (err, answers) {
+					Answer.find().done(function (err, answers) {
 						if (err) {
 							return res.send(err,500);
 						}

@@ -28,7 +28,7 @@ module.exports = {
 	},
 
 	alreadyPlayed: function (user_id, question_id, cb) {
-		this.findAll({ user_id: user_id, question_id: question_id }).done(function (err, games) {
+		this.find({ user_id: user_id, question_id: question_id }).done(function (err, games) {
 			if (err) {
 				return res.send(err, 500);
 			} else {

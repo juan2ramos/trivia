@@ -6,17 +6,26 @@
 		<!-- Viewport mobile tag for sensible mobile support -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-		<!-- JavaScript and stylesheets from your assets folder are included here -->
-		<%- assets.css() %>
+		<!--STYLES-->
+<link rel="stylesheet" href="/styles/jquery.ketchup.css">
+<link rel="stylesheet" href="/styles/normalize.css">
+<link rel="stylesheet" href="/styles/style.css">
+<!--STYLES END-->
 	</head>
 
 	<body>
 		<%- body %>
 
 		<!-- Templates from your view path are included here -->
-		<%- assets.templateLibrary() %>
+		<!--TEMPLATES-->
+
+<!--TEMPLATES END-->
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-		<%- assets.js() %>
+		<!--SCRIPTS-->
+<script src="/js/jquery.ketchup.all.min.js"></script>
+<script src="/js/jquery.mb.audio.js"></script>
+<script src="/js/trivia.js"></script>
+<!--SCRIPTS END-->
 	</body>
 </html>
