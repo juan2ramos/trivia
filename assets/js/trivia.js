@@ -49,12 +49,13 @@ $(function()
 
 	var startTimer = function() {
 		var start = new Date().getTime();
-		var timer = 600;
+		var timer = 15000;
 		interval = window.setInterval(function() {
 			var elapsed = new Date().getTime() - start;
-			timer = Math.ceil(600 - elapsed/1000);
-			$('#timer').text(timer);
-			if (timer == 0) {
+			timer = 15000 - elapsed;
+			$('#timer').attr('data-ms', timer);
+			$('#timer').text(Math.ceil(timer/1000));
+			if (timer <= 0) {
 				$('#timer').trigger('timeout');
 			}
 		}, 100);
@@ -72,12 +73,12 @@ $(function()
 
 		$(this).addClass('selected');
 
-		var seconds = $('#timer').text();
+		var miliseconds = $('#timer').attr('data-ms');
 		var answer_id = $(this).attr('id');
 
 		$.mbAudio.play('select');
 
-		checkAnswer(answer_id, seconds);
+		checkAnswer(answer_id, miliseconds);
 	}
 
 	var disableAnswering = function () {
@@ -85,12 +86,12 @@ $(function()
 		window.clearInterval(interval);
 	}
 
-	var checkAnswer = function(answer_id, seconds) {
+	var checkAnswer = function(answer_id, miliseconds) {
 		$('#answered').text( parseInt( $('#answered').text() ) + 1 );
 
 		var check_answer_url = '/game/answer/';
 		var question_id = $('#question-area h1').attr('data-questionid');
-		$.post(check_answer_url, { question_id: question_id, answer_id: answer_id, seconds: seconds }, processResults);
+		$.post(check_answer_url, { question_id: question_id, answer_id: answer_id, miliseconds: miliseconds }, processResults);
 	}
 
 	var processResults = function(data) {

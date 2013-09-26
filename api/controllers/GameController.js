@@ -54,8 +54,15 @@ var GameController = {
 		var points = 0;
 		var msg;
 
-		var calculatePoints = function (seconds) {
-			return seconds;
+		var calculatePoints = function (miliseconds) {
+			if (miliseconds > 10000) {
+				points = Math.round(100 + ((miliseconds - 10000) / 100)*3.333);
+				points = Math.min(200, points);//max points: 200 (around 13 seconds left)
+			}else {
+				points = Math.round(100 - ((10000 - miliseconds) / 100)*1.333);
+				points = Math.max(10, points);//min points: 10 (around 3 seconds left)
+			}
+			return points;
 		};
 
 		var sendAnswer = function (answer) {
@@ -83,16 +90,16 @@ var GameController = {
 				}
 
 				var answer_id = req.param('answer_id');
-				var seconds = req.param('seconds');
+				var miliseconds = req.param('miliseconds');
 				if (answer_id == right_answer.id) {
-					points = calculatePoints(seconds);
+					points = calculatePoints(miliseconds);
 				}
 
 				Game.create({
 					user_id: req.user.id,
 					question_id: question_id,
 					answer_id: answer_id,
-					timeleft: seconds
+					timeleft: miliseconds
 				}).done(function(err, question) {
 
 					// Error handling
