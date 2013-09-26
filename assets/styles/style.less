@@ -10,6 +10,16 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'allstar';
+    src: url('../fonts/all_star_resort.eot');
+    src: url('../fonts/all_star_resort.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/all_star_resort.woff') format('woff'),
+         url('../fonts/all_star_resort.ttf') format('truetype'),
+         url('../fonts/all_star_resort.svg#allstar') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .icon:before, #question-area li:before {
     font: 1.1em 'icons_trivia';
@@ -106,8 +116,22 @@ button {
 #trivia-info {
     text-align: right;
 }
+#trivia-info h1 {
+    font-family: 'allstar';
+    font-size: 1.5em;
+    font-weight: normal;
+    margin: 0.5em 0;
+}
 #trivia_title {
     color: @color;
+    margin: 0.25em 0;
+}
+#trivia-info h3 {
+    margin: 0;
+}
+
+#game-area {
+    text-align: center;
 }
 
 .mid-avatar {
@@ -115,6 +139,9 @@ button {
     height: auto;
     padding-right: 10px;
     width: 80px;
+}
+#welcome {
+    text-align: left;
 }
 #welcome h1 {
     color: @color;
@@ -125,6 +152,7 @@ button {
     font-size: 1.5em;
     font-weight: normal;
     margin: 0;
+    text-align: left;
 }
 #question-area ul {
     margin: 0;
@@ -174,6 +202,7 @@ button {
     border: 8px solid @color;
     border-radius: 50%;
     display: inline-block;
+    font-family: 'allstar';
     font-size: 3em;
     height: 2em;
     line-height: 2em;
