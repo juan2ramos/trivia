@@ -1,6 +1,7 @@
 $(function()
 {
 	var nextQuestion = function() {
+		scrollPage('#game-area');
 		$('#timer').css('display', 'inline-block');
 		$('#welcome, #score p, #next_question').hide();
 		$('#next_question button').text('Siguiente Pregunta');
@@ -22,6 +23,11 @@ $(function()
 
 		//preload audio
 		$(document).trigger('initAudio');
+	}
+
+	var scrollPage = function(selector) {
+		var offset = $(selector).offset().top;
+		$('html, body').animate({scrollTop: offset}, 'slow');
 	}
 
 	var displayQuestion = function(question, answers) {
