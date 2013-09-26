@@ -76,12 +76,12 @@ button {
 }
 
 #account-nav {
-    padding: 0 20px;
+    padding: 0 10px;
 }
 #account-nav h3 {
     color: @color;
     display: inline-block;
-    margin: 10px 10px 10px 0;
+    margin: 10px;
     vertical-align: middle;
 }
 .small-avatar {
@@ -114,13 +114,14 @@ button {
 }
 
 #trivia-info {
+    clear: both;
     text-align: right;
 }
 #trivia-info h1 {
     font-family: 'allstar';
     font-size: 1.5em;
     font-weight: normal;
-    margin: 0.5em 0;
+    margin: 0 0 0.5em;
 }
 #trivia_title {
     color: @color;
@@ -223,6 +224,88 @@ button {
 #game_points {
     color: @color;
     font-weight: bold;
+}
+
+@media all and (min-width: 25em) {
+    #trivia-info h1 {
+        font-size: 2em;
+    }
+    #question-area li {
+        font-size: 1.2em;
+    }
+}
+
+@media all and (min-width: 40em) {
+    #trivia-info h1 {
+        font-size: 3em;
+    }
+    #trivia_title {
+        font-size: 2em;
+    }
+    #trivia-info h3 {
+        font-size: 1.5em;
+    }
+    #game-area {
+        position: relative;
+    }
+    #question-area h1 {
+        min-height: 5em;
+        width: 80%;
+    }
+    #timer {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+}
+
+@media all and (min-width: 50em) {
+    #header {
+        display: inline-block;
+    }
+    #trivia-info h1 {
+        font-size: 4em;
+    }
+    #account-nav {
+        float: right;
+        margin-top: 0;
+    }
+    #question-area h1 {
+        font-size: 2em;
+        min-height: 4em;
+    }
+    #question-area li {
+        font-size: 1.4em;
+    }
+}
+
+@media all and (min-width: 58em) {
+    #header a {
+        background-position: -26px -205px;
+        width: 362px;
+        height: 118px;
+    }
+    #trivia-info {
+        float: right;
+        width: 30%;
+    }
+    #game-area {
+        width: 65%;
+    }
+    #footer {
+        clear: both;
+    }
+}
+
+@media all and (min-width: 66em) {
+    #header a {
+        background-position: -26px -29px;
+        width: 448px;
+        height: 139px;
+    }
+    #trivia-info h1 {
+        font-size: 5em;
+    }
 }
 
 /* ==========================================================================
