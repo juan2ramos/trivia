@@ -3,6 +3,9 @@ $(function()
 	var nextQuestion = function() {
 		scrollPage('#game-area');
 		$('#timer').css('display', 'inline-block');
+
+		restartAnimation();
+
 		$('#welcome, #score p, #next_question').hide();
 		$('#next_question button').text('Siguiente Pregunta');
 		$('#question-area').text('...cargando...');
@@ -23,6 +26,14 @@ $(function()
 
 		//preload audio
 		$(document).trigger('initAudio');
+	}
+
+	var restartAnimation = function() {
+		$('.loader, .mask').css('animation', 'none');
+		setTimeout(function() {
+			$('.loader, .mask').css('animation', '');
+		}, 10);
+		$('.loader, .mask').css('animation-play-state', 'running');
 	}
 
 	var scrollPage = function(selector) {
@@ -54,7 +65,7 @@ $(function()
 			var elapsed = new Date().getTime() - start;
 			timer = 15000 - elapsed;
 			$('#timer').attr('data-ms', timer);
-			$('#timer').text(Math.ceil(timer/1000));
+			$('#seconds').text(Math.ceil(timer/1000));
 			if (timer <= 0) {
 				$('#timer').trigger('timeout');
 			}
@@ -84,6 +95,7 @@ $(function()
 	var disableAnswering = function () {
 		$('#question-area li').off('click', answerClick).addClass('disabled');
 		window.clearInterval(interval);
+		$('.loader, .mask').css('animation-play-state', 'paused');
 	}
 
 	var checkAnswer = function(answer_id, miliseconds) {
@@ -131,6 +143,9 @@ $(function()
 		//nextQuestion();
 		$('#score p, #timer').hide();
 		$('#next_question button').on('click', nextQuestion);
+
+		//less no agrega bien esta regla :(
+		$('.mask').css('border-radius', '100% 0 0 100% / 50% 0 0 50%');
 	}
 
 	//VALIDATION

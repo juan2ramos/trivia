@@ -32,7 +32,6 @@ html {
     height: 100%;
 }
 body {
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
     background: url("http://elparlanteamarillo.com/static/images/fondo-trama.png") repeat fixed;
     color: #fff;
@@ -200,17 +199,70 @@ button {
 }
 
 #timer {
-    border: 8px solid @color;
     border-radius: 50%;
+    border: 2px solid @color;
     display: inline-block;
     font-family: 'allstar';
     font-size: 3em;
     height: 2em;
-    line-height: 2em;
     margin: 10px;
-    text-align: center;
+    position: relative;
     vertical-align: middle;
     width: 2em;
+}
+.loader {
+    animation: time 15s linear 1 forwards;
+    animation-play-state: paused;
+    background: linear-gradient(to right, @color 50%, #000 50%); /* Foreground color, Background colour */
+    border-radius: 50%;
+    height: 100%; /* Height and width */
+    width: 100%; /* Height and width */
+}
+.mask {
+    animation: mask 15s linear 1 forwards;
+    animation-play-state: paused;
+    border-radius: 100% 0 0 100% / 50% 0 0 50%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform-origin: 100% 50%;
+    width: 50%;
+}
+#seconds {
+    background: #000;
+    border-radius: 50%;
+    border: 2px solid @color;
+    height: 70%;
+    left: 13%;
+    line-height: 1.4em;
+    position: absolute;
+    text-align: center;
+    top: 13%;
+    width: 70%;
+}
+@keyframes time {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes mask {
+    0% {
+        background: #000; /* Background colour */
+        transform: rotate(0deg);
+    }
+    50% {
+        background: #000; /* Background colour */
+        transform: rotate(-180deg);
+    }
+    50.01% {
+        background: @color; /* Foreground colour */
+        transform: rotate(0deg);
+    }
+    100% {
+        background: @color; /* Foreground colour */
+        transform: rotate(-180deg);
+    }
 }
 
 #right_answer {
