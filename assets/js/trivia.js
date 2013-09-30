@@ -4,8 +4,6 @@ $(function()
 		scrollPage('#game-area');
 		$('#timer').css('display', 'inline-block');
 
-		restartAnimation();
-
 		$('#welcome, #score p, #next_question').hide();
 		$('#next_question button').text('Siguiente Pregunta');
 		$('#question-area').text('...cargando...');
@@ -17,6 +15,8 @@ $(function()
 				$('#question-area').text(data.msg);
 				return;
 			}
+
+			restartAnimation();
 
 			displayQuestion(data.question, data.answers);
 			startTimer();
