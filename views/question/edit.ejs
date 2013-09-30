@@ -10,7 +10,7 @@
 		</tr>
 		<% _.each(answers, function (answer) { %>
 		<tr>
-			<td><input type="radio" name="correct" value="<%= answer.id %>" <% if (answer.correct === 1) { %>checked<% } %> /></td>
+			<td><input type="radio" name="correct" value="<%= answer.id %>" <% if (answer.correct == 1) { %>checked<% } %> /></td>
 			<td><input type="text" name="answer_<%= answer.id %>" value="<%= answer.answer %>" /></td>
 		</tr>
 		<% }) %>

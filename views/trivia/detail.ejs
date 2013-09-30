@@ -16,7 +16,7 @@
 			<ul>
 			<% question.answers.forEach(function(answer) { %>
 				<li>
-				<% if (answer.correct === 1) { %>
+				<% if (answer.correct == 1) { %>
 			    	<mark><%= answer.answer %></mark>
 			    <% } else { %>
 			    	<%= answer.answer %>
